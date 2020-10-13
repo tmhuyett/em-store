@@ -1,4 +1,8 @@
 /* CSS Custom Properties Definitions */
+html {
+  background-color: khaki;
+
+}
 
 :root {
   --maxWidth-none: "none";
@@ -252,6 +256,10 @@ a:focus {
 
 .global-header {
   margin-bottom: var(--spacing-12);
+}
+
+#farm {
+background-color: rgb(212, 250, 0)
 }
 
 .main-heading {

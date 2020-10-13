@@ -4,7 +4,6 @@ import { Link, graphql } from "gatsby"
 import Bio from "../components/bio"
 import Layout from "../components/layout"
 import SEO from "../components/seo"
-
 const BlogPostTemplate = ({ data, pageContext, location }) => {
   const post = data.markdownRemark
   const siteTitle = data.site.siteMetadata?.title || `Title`
@@ -12,6 +11,16 @@ const BlogPostTemplate = ({ data, pageContext, location }) => {
 
   return (
     <Layout location={location} title={siteTitle}>
+<button
+    class="snipcart-add-item buyBtn"
+    data-item-id={post.frontmatter.id}
+    data-item-name={post.frontmatter.title}
+    data-item-price={post.frontmatter.price}
+    data-item-url={post.frontmatter.path}>
+    ADD TO CART
+</button><p>{post.frontmatter.price}</p>
+<button className="snipcart-checkout">Proceed to Checkout</button><p><span className="snipcart-items-count"></span>
+<span className="snipcart-total-price"></span></p>
       <SEO
         title={post.frontmatter.title}
         description={post.frontmatter.description || post.excerpt}
@@ -79,6 +88,8 @@ export const pageQuery = graphql`
       html
       frontmatter {
         title
+        price
+        id
         date(formatString: "MMMM DD, YYYY")
         description
       }
