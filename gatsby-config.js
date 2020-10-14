@@ -1,65 +1,37 @@
 module.exports = {
   siteMetadata: {
-    title: 'React & Gatsby shop powered by Snipcart',
-    author: "Snipcart's geeks",
-    description: "A snipcart's demo using React and Gatsby.",
-    siteUrl: 'https://snipcart-react-gatsby.netlify.com/',
+    title: `Gatsby Starter Blog`,
+    author: {
+      name: `Kyle Mathews`,
+      summary: `who lives and works in San Francisco building useful things.`,
+    },
+    description: `A starter blog demonstrating what Gatsby can do.`,
+    siteUrl: `https://gatsby-starter-blog-demo.netlify.app/`,
+    social: {
+      twitter: `kylemathews`,
+    },
   },
-  pathPrefix: '/em-store',
   plugins: [
 
-    
     {
-      resolve: `gatsby-plugin-snipcart-advanced`,
+      resolve: 'gatsby-plugin-snipcart',
       options: {
-          version: '3.0.15',
-          publicApiKey: 'MjQyZGJhZWItNWZhMi00Njc3LWI2MGYtYWFmYjgwMDhlZmU3NjM3Mzc2MTU4MjUxNTM1Mzg3', // use public api key here or in environment variable
-          defaultLang: 'en',
-          currency: 'usd',
-          openCartOnAdd: false,
-          locales: {
-            fr: {
-              actions: {
-                checkout: 'Valider le panier',
-              },
-            }
-          },
-          innerHTML: `
-          <billing section="bottom">
-              <!-- Customization goes here -->
-          </billing>`,
-      },
-  },
-
-  {
-    "scripts": {
-      "deploy": "gatsby build --prefix-paths && gh-pages -d public"
-    }
-  }
-
-  
-    
-      `gatsby-plugin-sharp`,
-      `gatsby-transformer-sharp`,
-      `gatsby-transformer-remark`,
-      {
-        resolve: `gatsby-source-filesystem`,
-        options: {
-          path: `${__dirname}/content/blog`,
-        },
-      },
-      {
-        resolve: `gatsby-plugin-mdx`,
-        options: {
-          extensions: [`.mdx`, `.md`],
-        },
-      },
-
+        apiKey: 'MjQyZGJhZWItNWZhMi00Njc3LWI2MGYtYWFmYjgwMDhlZmU3NjM3Mzc2MTU4MjUxNTM1Mzg3',
+        autopop: true
+      }
+    },
     {
       resolve: `gatsby-source-filesystem`,
       options: {
-        name: `markdown-pages`,
         path: `${__dirname}/content/blog`,
+        name: `blog`,
+      },
+    },
+    {
+      resolve: `gatsby-source-filesystem`,
+      options: {
+        path: `${__dirname}/content/assets`,
+        name: `assets`,
       },
     },
     {
@@ -69,7 +41,7 @@ module.exports = {
           {
             resolve: `gatsby-remark-images`,
             options: {
-              maxWidth: 590,
+              maxWidth: 630,
             },
           },
           {
@@ -78,9 +50,9 @@ module.exports = {
               wrapperStyle: `margin-bottom: 1.0725rem`,
             },
           },
-          'gatsby-remark-prismjs',
-          'gatsby-remark-copy-linked-files',
-          'gatsby-remark-smartypants',
+          `gatsby-remark-prismjs`,
+          `gatsby-remark-copy-linked-files`,
+          `gatsby-remark-smartypants`,
         ],
       },
     },
@@ -102,16 +74,12 @@ module.exports = {
         background_color: `#ffffff`,
         theme_color: `#663399`,
         display: `minimal-ui`,
-        icon: `src/assets/gatsby-icon.png`,
+        icon: `content/assets/gatsby-icon.png`,
       },
     },
-    `gatsby-plugin-offline`,
     `gatsby-plugin-react-helmet`,
-    {
-      resolve: 'gatsby-plugin-typography',
-      options: {
-        pathToConfigModule: 'src/utils/typography',
-      },
-    },
+    // this (optional) plugin enables Progressive Web App + Offline functionality
+    // To learn more, visit: https://gatsby.dev/offline
+    // `gatsby-plugin-offline`,
   ],
 }

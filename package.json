@@ -1,5 +1,6 @@
 {
-  "name": "gatsby-starter-blog",
+  "homepage": "https://tmhuyett.github.io/em-store/",
+  "name": "em-s",
   "private": true,
   "description": "A starter for a blog powered by Gatsby and Markdown",
   "version": "0.1.0",
@@ -19,6 +20,7 @@
     "gatsby-plugin-offline": "^3.2.30",
     "gatsby-plugin-react-helmet": "^3.3.12",
     "gatsby-plugin-sharp": "^2.6.40",
+    "gatsby-plugin-snipcart": "^1.1.2",
     "gatsby-plugin-snipcart-advanced": "^1.0.1",
     "gatsby-plugin-typography": "^2.5.13",
     "gatsby-remark-copy-linked-files": "^2.3.18",
@@ -43,7 +45,6 @@
     "gh-pages": "^3.1.0",
     "prettier": "2.1.2"
   },
-  "homepage": "https://github.com/gatsbyjs/gatsby-starter-blog#readme",
   "keywords": [
     "gatsby"
   ],
@@ -54,6 +55,7 @@
     "url": "git+https://github.com/gatsbyjs/gatsby-starter-blog.git"
   },
   "scripts": {
+    "deploy": "gatsby build --prefix-paths && gh-pages -d public -b master",
     "build": "gatsby build",
     "develop": "gatsby develop",
     "format": "prettier --write \"**/*.{js,jsx,ts,tsx,json,md}\"",
